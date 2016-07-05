@@ -11,6 +11,8 @@
 #mainNav
   color: #222
   font-size: 13pt
+  line-height: 1.3em
+  font-weight: bold
   text-align: right
   position: fixed
   top: 50%
@@ -18,14 +20,10 @@
   z-index: 10
   ul
     list-style: none
-    li
-      padding: 5px
   a
-    color: #555
-    text-transform: uppercase
-    text-shadow: 0 0 0 1px white
-    letter-spacing: .1px
-    &:hover
-      font-weight: bold
+    color: #333
+    padding: 5px
+    &:hover, &.active
+      color: white
+      background-color: #333
       text-decoration: none
-      letter-spacing: 0
