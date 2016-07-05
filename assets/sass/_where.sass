@@ -1,0 +1,57 @@
+.component#where
+  color: white
+  background-color: #808183  //#454648 #333
+  *::selection
+    background-color: #ff6319
+  li
+    display: inline-block
+    width: 15%
+  a,
+  a::after
+    display: block
+    transition-duration: .25s
+    transition-timing-function: cubic-bezier(0.53,-0.02, 1, 1.11)
+  a
+    border: 8px solid transparent
+    color: white
+    font-weight: bold
+    text-transform: uppercase
+    padding: 30px
+    overflow: hidden
+    position: relative
+    transition-property: border
+    z-index: 0
+    &:hover, &:focus
+      border-color: white
+      text-decoration: none
+    &::after
+      content: ''
+      width: 100%
+      height: 100%
+      border-radius: 50%
+      transition-property: transform
+      position: absolute
+      z-index: -1
+    &:hover::after, &:focus::after
+      transform: scale(5)
+
+  #email::after
+    background-color: #ee352e
+    right: 0
+    bottom: -100%
+    left: 0
+  #github::after
+    background-color: #a7a9ac
+    right: -50%
+    bottom: -100%
+    left: 50%
+  #linkedin::after
+    background-color: #2850ad
+    top: -100%
+    right: 0
+    left: 0
+  #twitter::after
+    background-color: #006EC7
+    top: -100%
+    right: -100%
+    left: 50%

@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800)
+
+@import "normalize"
+
+@import "header"
+@import "body"
+@import "footer"
+
+$accentColor:  #fccc0a
+
+*::selection
+  color: white
+  background-color: #333
+
+html
+  color: #222
+  background-color: $accentColor
+
+body
+  background-color: white
+
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
