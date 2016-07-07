@@ -46,4 +46,46 @@ window.onload = function() {
             document.querySelector('body').setAttribute('class', 'active');
         }
     });
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY3ViZTE4OSIsImEiOiJjaXFjaW1hc3owMDRnaHhuaGg1NWh5dzI4In0.NS91wgNockGS26POuAhA5A';
+    var map = new mapboxgl.Map({
+        "container": 'map',
+        "style": 'mapbox://styles/cube189/ciqcjfxw8002idxm4welgv2mu',
+        "center": [
+            19.480556, 52.069167
+        ],
+        "zoom": 5
+    });
+    map.on('load', function() {
+        map.addSource("lublinMarker", {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [22.4236878, 51.2180254]
+                        },
+                        "properties": {
+                            "marker-symbol": "monument"
+                        }
+                    }
+                ]
+            }
+        });
+
+        map.addLayer({
+            "id": "lublinPoint",
+            "type": "circle",
+            "source": "lublinMarker",
+            "paint": {
+                "circle-radius": 10,
+                "circle-color": "#b933ad"
+            }
+        });
+
+        map.flyTo({"zoom": 5.7})
+    });
 };
