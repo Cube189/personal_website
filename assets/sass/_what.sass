@@ -126,24 +126,58 @@
 
   #skills
     #projectSearch
-      border-bottom: 1px solid #aaa
-      padding: 5px
+      border: 5px solid #ccc
+      padding: 10px
+      transition: border .1s ease-out
+      &:focus
+        border-color: #aaa
+      &::placeholder
+        color: #aaa
     ul, input
       width: 20vw
     ul
+      text-align: justify
       padding: 0
       li
         display: inline-block
-        margin: 7px 5px
+        margin: 3px
+        &:nth-child(6n)
+          button:hover,
+          button:focus
+            background-color: #ff6319
+        &:nth-child(6n+1)
+          button:hover,
+          button:focus
+            background-color: #b933ad
+        &:nth-child(6n+2)
+          clear: right
+          button:hover,
+          button:focus
+            background-color: #00933c
+        &:nth-child(6n+3)
+          button:hover,
+          button:focus
+            background-color: #ee352e
+        &:nth-child(6n+4)
+          button:hover,
+          button:focus
+            background-color: #fccc0a
+            color: black
+        &:nth-child(6n+5)
+          button:hover,
+          button:focus
+            background-color: #2850ad
         button
-          background-color: #eee
+          color: white
+          background-color: #333
           border: 0
-          border-bottom: 1px solid #aaa
           font-size: 12pt
           line-height: 1em
           font-weight: bold
           text-transform: uppercase
           list-style: none
-          padding: 6px
-          &:hover
-            border-color: #666
+          padding: 8px
+          transition: all 2s ease-out
+          &:hover,
+          &:focus
+            transition: none

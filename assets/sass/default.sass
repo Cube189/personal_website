@@ -23,10 +23,16 @@ body
   background-color: white
 
 a
-  color: #1a0dab
+  color: #2850ad
   text-decoration: none
-  &:hover
-    text-decoration: underline
+
+p
+  a
+    &:hover,
+    &:focus
+      color: white
+      background-color: #333
+      outline: 5px solid #333
 
 button,
 input
