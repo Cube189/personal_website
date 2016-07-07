@@ -30,9 +30,11 @@ abbr[data-title]
   border-bottom: 2px dashed currentColor
   position: relative
   cursor: help
-  transition: border .1s ease-out
   &:hover
-    border-color: #b933ad
+    color: white
+    background-color: #333
+    border: 0
+    outline: 5px solid #333
     &::before,
     &::after
       transform: translateY(0)
@@ -51,8 +53,8 @@ abbr[data-title]
     height: 0
     border: 9px solid
     border-color: transparent transparent #b933ad #b933ad
-    top: 25px
-    left: 5px
+    top: 30px
+    left: 80%
   &::after
     content: attr(data-title)
     color: white
@@ -61,8 +63,45 @@ abbr[data-title]
     line-height: 1.1em
     white-space: nowrap
     padding: 15px
-    top: 40px
-    left: 5px
+    top: 45px
+    left: 80%
+
+abbr[data-title]
+  &:hover
+    color: white
+    background-color: #333
+    border: 0
+    outline: 5px solid #333
+    &::before,
+    &::after
+      transform: translateY(0)
+      opacity: 1
+  &::before,
+  &::after
+    display: block
+    position: absolute
+    transform: translateY(-5px)
+    opacity: 0
+    transition: all .1s ease-out
+    pointer-events: none
+  &::before
+    content: ''
+    width: 0
+    height: 0
+    border: 9px solid
+    border-color: transparent transparent #b933ad #b933ad
+    top: 30px
+    left: 80%
+  &::after
+    content: attr(data-title)
+    color: white
+    background-color: #b933ad
+    font-size: 1rem
+    line-height: 1.1em
+    white-space: nowrap
+    padding: 15px
+    top: 45px
+    left: 80%
 p
   a
     color: currentColor
