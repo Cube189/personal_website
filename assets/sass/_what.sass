@@ -8,32 +8,6 @@
       display: block
       margin-left: -1ch
 
-  // ul#projects
-  //   width: 40vw
-  //   height: 100vh
-  //   list-style: none
-  //   columns: 50% 2
-  //   break-inside: avoid
-  //   transform: rotate3d(1, 0, 1, 55deg) translate(-33vw, -50vh)
-  //   transform-origin: 50% 100%
-  //   position: absolute
-  //   top: 0
-  //   right: 0
-  //   bottom: 0
-  //   li
-  //     width: 50%
-  //     margin: 20px
-  //   a
-  //     display: block
-  //     border: 10px solid #ccc
-  //     text-align: center
-  //     box-shadow: 0 0 4px #ccc
-  //     header
-  //       display: none
-  //     img
-  //       width: 100%
-  //       display: block
-
   ul#projects
     max-width: 50vw
     max-height: 80vh
@@ -102,7 +76,7 @@
       img
         display: block
         min-width: 100%
-        min-height: 100%
+        max-height: 100%
         text-align: center
 
     article
@@ -130,7 +104,7 @@
       padding: 10px
       transition: border .1s ease-out
       &:focus
-        border-color: #aaa
+        border-color: #808183
       &::placeholder
         color: #aaa
     ul, input
@@ -169,12 +143,13 @@
             background-color: #2850ad
         button
           color: white
-          background-color: #333
+          background-color: #555
           border: 0
           font-size: 12pt
           line-height: 1em
           font-weight: bold
           text-transform: uppercase
+          white-space: nowrap
           list-style: none
           padding: 8px
           transition: all 2s ease-out

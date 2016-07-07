@@ -5,31 +5,16 @@ function getComponentsOffset() {
 
     for (var i = 0; i < components.length; i++) {
         componentsOffset.push(components[i].offsetTop);
-        // componentsColors.push(components[i].getAttribute('data-bgColor'));
-        // document.getElementById(components[i].getAttribute('id')).removeAttribute('data-bgColor');
     }
 
     return componentsOffset;
 }
 
-// function changeBgColor() {
-//     var currentBgColor;
-//     var nextBgColor;
-//     for (var i = 0; i < componentsOffset.length - 1; i++) {
-//         if (pxFromTop >= componentsOffset[i] && pxFromTop < componentsOffset[i + 1]) {
-//             currentBgColor = componentsColors[i];
-//             nextBgColor = componentsColors[i + 1];
-//             console.log(currentBgColor, nextBgColor);
-//             document.body.style.backgroundColor = "rgb" + currentBgColor;
-//         }
-//     }
-// }
-
 function highlightMenuItems() {
     var componentsOffset = getComponentsOffset();
     var menuItems = document.querySelectorAll('#mainNav li');
 
-    for (var i = componentsOffset.length; i > 1; i--) {   // 0 is for slider we dont want
+    for (var i = componentsOffset.length; i > 1; i--) { // 0 is for slider we dont want
         if (pxFromTop >= componentsOffset[i]) {
             document.getElementById(menuItems[i].getAttribute('id')).className = "active";
             return 0;
@@ -37,14 +22,28 @@ function highlightMenuItems() {
     }
 }
 
+function setAuthorsAge() {
+    var element = document.getElementById('age');
+
+    var birthDate = new Date(1996, 10, 9);
+    var todaysDate = new Date();
+
+    var msInOneYear = 365 * 24 * 60 * 60 * 1000;
+
+    var numberOfYears = Math.floor((todaysDate.getTime() - birthDate.getTime()) / msInOneYear);
+
+    element.innerHTML = numberOfYears;
+}
+
 window.onload = function() {
+    setAuthorsAge();
 
     document.addEventListener('scroll', function() {
-      var pxFromTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        var pxFromTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
-      // highlightMenuItems();
-      if (pxFromTop > 58) {
-        document.querySelector('body').setAttribute('class', 'active');
-      }
+        // highlightMenuItems();
+        if (pxFromTop > 58) {
+            document.querySelector('body').setAttribute('class', 'active');
+        }
     });
 };
