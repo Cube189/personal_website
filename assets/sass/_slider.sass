@@ -31,36 +31,33 @@
     z-index: 10
 
   #sliderNav
-    &:hover button
-      opacity: 1
     ul,
     ul > li
       list-style: none
+      &:hover svg
+        fill: white
     button
       background-color: transparent
       border: 5px solid transparent
       line-height: 1em
-      // opacity: 0
       margin-bottom: -20px
       padding: 10px
       position: absolute
       bottom: 20%
       z-index: 99
-      transition: opacity .5s ease-out, border .25s cubic-bezier(0.53,-0.02, 1, 1.11)
+      transition: border .25s cubic-bezier(0.53,-0.02, 1, 1.11)
       &:hover
         border-color: white
       &#prevSliderBtn
         left: 8vw
-        svg
-          transform: rotate(90deg)
       &#nextSliderBtn
         right: 8vw
-        svg
-          transform: rotate(-90deg)
       svg
         width: 20px
         height: 20px
-        fill: white
+        fill: rgba(255, 255, 255, .2)
+        vertical-align: middle
+        transition: fill .25s cubic-bezier(0.53,-0.02, 1, 1.11)
 
 
   // #slide0

@@ -6,15 +6,15 @@ var DEBUG_ENV = false;
 
 // Debugger open for the end-user. Just because ;)
 var Debug = (function toggleDebug() {
-  console.log("INFO: You can see the logs of what is happening by calling Debug.toggleDebug() ;)");
+    console.log("INFO: You can see the logs of what is happening by calling Debug.toggleDebug() ;)");
 
-  function toggleDebug() {
-    DEBUG_ENV = DEBUG_ENV ? false : true;
-    console.log("INFO: Debugging set to", DEBUG_ENV);
-  }
-  return {
-    toggleDebug: toggleDebug
-  };
+    function toggleDebug() {
+        DEBUG_ENV = DEBUG_ENV ? false : true;
+        console.log("INFO: Debugging set to", DEBUG_ENV);
+    }
+    return {
+        toggleDebug: toggleDebug
+    };
 })();
 
 //utils
@@ -36,6 +36,18 @@ function whichTransitionEvent() {
     }
 }
 //endof utils
+
+(function hideCtaWelcomeOnScroll() {
+    var ctaWelcomeElement = document.getElementById('cta-scroll');
+    var initialCtaWelcomeOffset = ctaWelcomeElement.offsetTop;
+    window.addEventListener('scroll', function() {
+        var pxsFromTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+        var ctaWelcomeOffset = ctaWelcomeElement.getBoundingClientRect().top;
+
+        if (DEBUG_ENV) console.log('#cta-scroll bounding rectangle offset:', ctaWelcomeOffset, '#cta-scroll initial offset:', initialCtaWelcomeOffset);
+        ctaWelcomeElement.style.opacity = ctaWelcomeOffset / initialCtaWelcomeOffset;
+    }, false);
+})();
 
 (function setAuthorsAge() {
     var element = document.getElementById('age');
