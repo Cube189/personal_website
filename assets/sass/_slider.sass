@@ -7,7 +7,6 @@
     height: 100%
     color: white
     background-color: #888
-    transform: translateZ(0)  // force gpu acc
     overflow: hidden
     visibility: hidden
     position: absolute
@@ -17,10 +16,10 @@
     left: 0
     z-index: 0
     transition: all .4s ease-out
+    transform: translateZ(0)  // force gpu acc
 
   .prevSlide
     opacity: 0
-    // box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, .1)
     transform: scale(.75) translateY(50%)
 
   .currentSlide
@@ -38,23 +37,30 @@
     ul > li
       list-style: none
     button
-      width: 50px
-      height: 50px
       background-color: transparent
-      border: 3px solid white
-      border-radius: 50%
+      border: 5px solid transparent
+      line-height: 1em
       // opacity: 0
       margin-bottom: -20px
       padding: 10px
       position: absolute
       bottom: 20%
       z-index: 99
-      transition: all .5s ease-out
-
+      transition: opacity .5s ease-out, border .25s cubic-bezier(0.53,-0.02, 1, 1.11)
+      &:hover
+        border-color: white
       &#prevSliderBtn
         left: 8vw
+        svg
+          transform: rotate(90deg)
       &#nextSliderBtn
         right: 8vw
+        svg
+          transform: rotate(-90deg)
+      svg
+        width: 20px
+        height: 20px
+        fill: white
 
 
   // #slide0

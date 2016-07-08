@@ -1,8 +1,21 @@
 'use strict';
 
 //flags
-const DEBUG_ENV = false;
+var DEBUG_ENV = false;
 //endof flags
+
+// Debugger open for the end-user. Just because ;)
+var Debug = (function toggleDebug() {
+  console.log("INFO: You can see the logs of what is happening by calling Debug.toggleDebug() ;)");
+
+  function toggleDebug() {
+    DEBUG_ENV = DEBUG_ENV ? false : true;
+    console.log("INFO: Debugging set to", DEBUG_ENV);
+  }
+  return {
+    toggleDebug: toggleDebug
+  };
+})();
 
 //utils
 // Thanks, David :)) https://davidwalsh.name/css-animation-callback
@@ -56,12 +69,12 @@ var Slider = (function() {
     var movingInSlide;
 
     function initialize() {
-        console.log("INFO: Slider.changeSlide() requires 'next' or 'prev' as parameters when called from within the console. Use nextSlide()/prevSlide() for the same effect.");
+        console.log("INFO: Slider._changeSlide() requires 'next' or 'prev' as parameters when called from within the console. Not recommended, use nextSlide() and prevSlide() for the same effect.");
         document.getElementById('slide' + currentSlideIndex).setAttribute('class', currentClass);
         if (DEBUG_ENV) console.log("Current slide ", currentSlideIndex);
     }
 
-    function changeSlide(b) {
+    function _changeSlide(b) {
         const behavior = b || null;
         if (isSlideChanging)
             return false;
@@ -105,17 +118,17 @@ var Slider = (function() {
 
     initialize();
 
-    document.getElementById('prevSliderBtn').addEventListener('click', changeSlide, false);
-    document.getElementById('nextSliderBtn').addEventListener('click', changeSlide, false);
+    document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
+    document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
 
-    // window.setInterval(function() { changeSlide('next') }, 5000);
-    window.setInterval(changeSlide.bind(this, 'next'), 7000);
+    // window.setInterval(function() { _changeSlide('next') }, 5000);
+    window.setInterval(_changeSlide.bind(this, 'next'), 7000);
 
     return {
         initialize: initialize,
-        changeSlide: changeSlide,
-        prevSlide: changeSlide.bind(this, 'prev'),
-        nextSlide: changeSlide.bind(this, 'next')
+        _changeSlide: _changeSlide,
+        prevSlide: _changeSlide.bind(this, 'prev'),
+        nextSlide: _changeSlide.bind(this, 'next')
     };
 })();
 
