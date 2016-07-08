@@ -1,10 +1,10 @@
 'use strict';
 
-//flags
+/* FLAGS */
 var DEBUG_ENV = false;
-//endof flags
+/* endof FLAGS */
 
-// Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break). Just because ;)
+// Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break 😐). Just because ;)
 var Debugging = (function toggleDebug() {
     console.log("INFO: You can see the logs of what is happening by calling Debugging.toggleDebug() ;)");
 
@@ -17,9 +17,9 @@ var Debugging = (function toggleDebug() {
     };
 })();
 
-//utils
-// Thanks, David :)) https://davidwalsh.name/css-animation-callback
+/* UTILS */
 function whichTransitionEvent() {
+    // Thanks, David :)) https://davidwalsh.name/css-animation-callback
     var t;
     var el = document.createElement('fakeelement');
     var transitions = {
@@ -35,7 +35,7 @@ function whichTransitionEvent() {
         }
     }
 }
-//endof utils
+/* endof UTILS */
 
 (function hideCtaWelcomeOnScroll() {
     var ctaWelcomeElement = document.getElementById('cta-scroll');
