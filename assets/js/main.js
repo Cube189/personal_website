@@ -4,9 +4,9 @@
 var DEBUG_ENV = false;
 //endof flags
 
-// Debugger open for the end-user. Just because ;)
-var Debug = (function toggleDebug() {
-    console.log("INFO: You can see the logs of what is happening by calling Debug.toggleDebug() ;)");
+// Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break). Just because ;)
+var Debugging = (function toggleDebug() {
+    console.log("INFO: You can see the logs of what is happening by calling Debugging.toggleDebug() ;)");
 
     function toggleDebug() {
         DEBUG_ENV = DEBUG_ENV ? false : true;
@@ -70,7 +70,7 @@ var Slider = (function() {
 
     var slidingOutClass = 'prevSlide';
     var currentClass = 'currentSlide';
-    var playClass = 'activeSlide'
+    var playClass = 'activeSlide';
     var slidingInClass = 'nextSlide';
 
     var isSlideChanging = false;
@@ -87,7 +87,7 @@ var Slider = (function() {
     }
 
     function _changeSlide(b) {
-        const behavior = b || null;
+        var behavior = b || null;
         if (isSlideChanging)
             return false;
         else {

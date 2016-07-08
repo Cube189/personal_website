@@ -31,40 +31,29 @@
     z-index: 10
 
   #sliderNav
-    ul,
-    ul > li
-      list-style: none
+    ul
+      margin-bottom: -20px
+      position: absolute
+      bottom: 20%
+      left: 8%
+      z-index: 99
       &:hover svg
         fill: white
+      li
+        display: inline-block
+        list-style: none
+        padding: 0 2px
     button
       background-color: transparent
       border: 5px solid transparent
       line-height: 1em
-      margin-bottom: -20px
       padding: 10px
-      position: absolute
-      bottom: 20%
-      z-index: 99
       transition: border .25s cubic-bezier(0.53,-0.02, 1, 1.11)
       &:hover
         border-color: white
-      &#prevSliderBtn
-        left: 8vw
-      &#nextSliderBtn
-        right: 8vw
       svg
         width: 20px
         height: 20px
         fill: rgba(255, 255, 255, .2)
         vertical-align: middle
-        transition: fill .25s cubic-bezier(0.53,-0.02, 1, 1.11)
-
-
-  // #slide0
-  //   background-color: yellow
-  // #slide1
-  //   background-color: red
-  // #slide2
-  //   background-color: green
-  // #slide3
-  //   background-color: purple
+        transition: fill .25s cubic-bezier(0.53,-0.02, 1, 1.11), transform .5s ease-out
