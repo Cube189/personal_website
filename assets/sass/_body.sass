@@ -3,7 +3,19 @@
 @import "what"
 @import "where"
 
-.component
+#cta-scroll
+  width: 36px
+  display: block
+  fill: white
+  margin-left: -18px
+  position: absolute
+  bottom: 7vh
+  left: 50%
+  z-index: 10
+  animation: ctaScroll 10s infinite
+
+.component,
+.slider article
   height: 100vh
   display: flex
   align-items: center
@@ -20,3 +32,9 @@
     width: 70%
     font-size: 16pt
     line-height: 1.5em
+
+@keyframes ctaScroll
+  10%, 20%
+    transform: translateY(50%) scaleX(.95)
+  0%, 5%, 15%, 25%
+    transform: translateY(0)
