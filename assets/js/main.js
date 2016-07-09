@@ -6,7 +6,7 @@ var DEBUG_ENV = false;
 
 // Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break ��). Just because ;)
 var Debugging = (function toggleDebug() {
-    console.log("INFO: You can see the logs of what is happening by calling Debugging.toggleDebug() ;)");
+    console.log("INFO: You can see the logs of what is happening by calling Debugging.toggleDebug() 😉");
 
     function toggleDebug() {
         DEBUG_ENV = DEBUG_ENV ? false : true;
@@ -37,15 +37,21 @@ function whichTransitionEvent() {
 }
 /* endof UTILS */
 
-(function hideCtaWelcomeOnScroll() {
-    var ctaWelcomeElement = document.getElementById('cta-scroll');
-    var initialCtaWelcomeOffset = ctaWelcomeElement.offsetTop;
+(function fadeOutCtaScrollOnScroll() {
+    var ctaScrollElement = document.getElementById('cta-scroll');
+    var initialCtaScrollOffset = ctaScrollElement.offsetTop;
     window.addEventListener('scroll', function() {
         var pxsFromTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
-        var ctaWelcomeOffset = ctaWelcomeElement.getBoundingClientRect().top;
+        var ctaScrollOffset = ctaScrollElement.getBoundingClientRect().top;
 
-        if (DEBUG_ENV) console.log('#cta-scroll bounding rectangle offset:', ctaWelcomeOffset, '#cta-scroll initial offset:', initialCtaWelcomeOffset);
-        ctaWelcomeElement.style.opacity = ctaWelcomeOffset / initialCtaWelcomeOffset;
+        if (pxsFromTop >= initialCtaScrollOffset)
+            ctaScrollElement.style.opacity = 0;
+        else if (pxsFromTop <= 0) {
+            ctaScrollElement.style.opacity = 1;
+        } else {
+            if (DEBUG_ENV) console.log('#cta-scroll bounding rectangle offset:', ctaScrollOffset, '#cta-scroll initial offset:', initialCtaScrollOffset);
+            ctaScrollElement.style.opacity = ctaScrollOffset / initialCtaScrollOffset;
+        }
     }, false);
 })();
 
@@ -62,9 +68,33 @@ function whichTransitionEvent() {
     element.innerHTML = parseInt(numberOfYears);
 })();
 
+var Nav = (function() {
+    var navElement = document.querySelector('#mainNav ul');
+    var showNavBtn = document.getElementById('showNavBtn');
+
+    function initialize() {
+        showNavBtn.addEventListener('click', toggleNav, false);
+    }
+
+    function isNavShown() {
+        return navElement.getAttribute('class') === 'active';
+    }
+
+    function toggleNav() {
+        if (DEBUG_ENV) console.log("Is nav open:", isNavShown());
+        if (!isNavShown())
+            navElement.setAttribute('class', 'active');
+        else
+            navElement.removeAttribute('class');
+    }
+
+    initialize();
+})();
+
 var Slider = (function() {
     var slider = document.getElementById('heroSlider');
     var slides = document.querySelectorAll('#heroSlider article');
+    var slidingInterval = 7000;
     var numberOfSlides = slides.length;
     var endOfAnimationEvent = whichTransitionEvent();
 
@@ -84,6 +114,13 @@ var Slider = (function() {
         console.log("INFO: Slider._changeSlide() requires 'next' or 'prev' as parameters when called from within the console. Not recommended, use nextSlide() and prevSlide() for the same effect.");
         document.getElementById('slide' + currentSlideIndex).setAttribute('class', currentClass);
         if (DEBUG_ENV) console.log("Current slide ", currentSlideIndex);
+
+        document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
+        document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
+
+        //TODO: Implement gesture recognition
+
+        window.setInterval(_changeSlide.bind(this, 'next'), slidingInterval);
     }
 
     function _changeSlide(b) {
@@ -130,12 +167,6 @@ var Slider = (function() {
 
     initialize();
 
-    document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
-    document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
-
-    // window.setInterval(function() { _changeSlide('next') }, 5000);
-    window.setInterval(_changeSlide.bind(this, 'next'), 7000);
-
     return {
         initialize: initialize,
         _changeSlide: _changeSlide,
@@ -165,9 +196,6 @@ var Slider = (function() {
                     "geometry": {
                         "type": "Point",
                         "coordinates": [22.570802, 51.4583888]
-                    },
-                    "properties": {
-                        "marker-symbol": "monument"
                     }
                 }]
             }

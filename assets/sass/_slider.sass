@@ -57,3 +57,13 @@
         fill: rgba(255, 255, 255, .2)
         vertical-align: middle
         transition: fill .25s cubic-bezier(0.53,-0.02, 1, 1.11), transform .5s ease-out
+
+@media only screen and (max-device-width: 740px) and (-webkit-min-device-pixel-ratio: 2)
+  .slider
+    .prevSlide
+      opacity: 1
+      transform: translateX(-100%)
+    .nextSlide
+      transform: translateX(100%)
+    #sliderNav
+      display: none

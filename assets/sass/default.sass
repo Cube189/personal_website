@@ -8,6 +8,7 @@
 
 $accentColor:  #fccc0a
 
+*:active,
 *:focus
   outline: 0
 
@@ -34,7 +35,7 @@ abbr[data-title]
     color: white
     background-color: #333
     border: 0
-    outline: 5px solid #333
+    box-shadow: 0 0 0 5px #333
     &::before,
     &::after
       transform: translateY(0)
@@ -79,9 +80,14 @@ p
       color: white
       background-color: #333
       text-decoration: none
-      outline: 5px solid #333
+      box-shadow: 0 0 0 5px #333
 
 button,
 input
   border: 0
   cursor: pointer
+
+@media only screen and (max-device-width: 740px) and (-webkit-min-device-pixel-ratio: 2)
+  p
+    font-size: 11pt
+    line-height: 1.3em

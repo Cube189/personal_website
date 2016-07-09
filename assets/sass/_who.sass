@@ -36,3 +36,14 @@
   .wrapper
     position: relative
     z-index: 2
+
+@media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)
+  .component#who
+    #map
+      text-align: left
+
+@media only screen and (max-device-width: 740px) and (-webkit-min-device-pixel-ratio: 2)
+  .component#who
+    p
+      font-size: 3vh
+      line-height: 1.5em
