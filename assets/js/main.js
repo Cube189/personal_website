@@ -114,6 +114,8 @@ var Slider = (function() {
     var movingOutSlide;
     var movingInSlide;
 
+    var touchXStart;
+
     function initialize() {
         console.log("INFO: Slider._changeSlide() requires 'next' or 'prev' as parameters when called from within the console. Not recommended, use nextSlide() and prevSlide() for the same effect.");
         document.getElementById('slide' + currentSlideIndex).setAttribute('class', currentClass);
@@ -122,7 +124,10 @@ var Slider = (function() {
         document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
         document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
 
-        //TODO: Implement gesture recognition
+        slider.addEventListener('touchstart', function(e) {
+            touchXStart = e.touches[0].clientX;
+        }, false);
+        slider.addEventListener('touchmove', _handleOnTouchMove, false);
 
         window.setInterval(_changeSlide.bind(this, 'next'), slidingInterval);
     }
@@ -167,6 +172,25 @@ var Slider = (function() {
             }, false);
         }
         if (DEBUG_ENV) console.log("Current slide ", currentSlideIndex);
+    }
+
+    function _handleOnTouchMove(e) {
+        if (!touchXStart) return false;
+        
+        var touchXEnd = e.touches[0].clientX;
+
+        var differenceX = touchXEnd - touchXStart;
+        if (Math.abs(differenceX) > 0) {
+            if (differenceX < 0){
+                console.log("Swiped left!");
+                _changeSlide('next');
+            }
+            else {
+                console.log("Swiped right!");
+                _changeSlide('prev');
+            }
+        }
+        
     }
 
     initialize();
