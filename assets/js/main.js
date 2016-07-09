@@ -4,7 +4,7 @@
 var DEBUG_ENV = false;
 /* endof FLAGS */
 
-// Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break ��). Just because ;)
+// Debugger open for the end-user (hope nobody will visit this on any ancient IE or it'll break 😐). Just because ;)
 var Debugging = (function toggleDebug() {
     console.log("INFO: You can see the logs of what is happening by calling Debugging.toggleDebug() 😉");
 
