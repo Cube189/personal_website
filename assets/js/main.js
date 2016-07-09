@@ -70,10 +70,14 @@ function whichTransitionEvent() {
 
 var Nav = (function() {
     var navElement = document.querySelector('#mainNav ul');
+    var navElementItems = document.querySelectorAll('#mainNav a');
     var showNavBtn = document.getElementById('showNavBtn');
 
     function initialize() {
         showNavBtn.addEventListener('click', toggleNav, false);
+        navElementItems.forEach(function(element) {
+            element.addEventListener('click', toggleNav, false);
+        }, this);
     }
 
     function isNavShown() {
