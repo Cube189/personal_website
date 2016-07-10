@@ -134,19 +134,22 @@ var Slider = (function() {
 
     function _changeSlide(b) {
         var behavior = b || null;
+
+        var changePrev = behavior === 'prev' || this !== undefined && this.getAttribute('id') === 'prevSliderBtn';
+
         if (isSlideChanging)
             return false;
         else {
             isSlideChanging = true;
 
-            if (behavior === 'prev' || this !== undefined && this.getAttribute('id') === 'prevSliderBtn') {
+            if (changePrev) {
                 if (currentSlideIndex > 0) {
                     movingOutSlide = document.getElementById('slide' + currentSlideIndex--);
                 } else {
                     movingOutSlide = document.getElementById('slide' + currentSlideIndex);
                     currentSlideIndex = numberOfSlides - 1;
                 }
-            } else if (behavior === 'next' || this !== undefined && this.getAttribute('id') === 'nextSliderBtn') {
+            } else {
                 if (currentSlideIndex < numberOfSlides - 1) {
                     movingOutSlide = document.getElementById('slide' + currentSlideIndex++);
                 } else {
@@ -157,14 +160,14 @@ var Slider = (function() {
 
             movingInSlide = document.getElementById('slide' + currentSlideIndex);
 
-            movingOutSlide.setAttribute('class', slidingOutClass);
+            movingOutSlide.setAttribute('class', changePrev ? slidingInClass : slidingOutClass);
             movingOutSlide.addEventListener(endOfAnimationEvent, function() {
                 if (DEBUG_ENV) console.log(endOfAnimationEvent, "1");
                 isSlideChanging = false;
                 movingOutSlide.removeAttribute('class');
             }, false);
 
-            movingInSlide.setAttribute('class', slidingInClass);
+            movingInSlide.setAttribute('class', changePrev ? slidingOutClass : slidingInClass);
             movingInSlide.addEventListener(endOfAnimationEvent, function() {
                 if (DEBUG_ENV) console.log(endOfAnimationEvent, "2");
                 isSlideChanging = false;
