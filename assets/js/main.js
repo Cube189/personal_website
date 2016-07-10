@@ -179,21 +179,20 @@ var Slider = (function() {
 
     function _handleOnTouchMove(e) {
         if (!touchXStart) return false;
-        
+
         var touchXEnd = e.touches[0].clientX;
 
         var differenceX = touchXEnd - touchXStart;
         if (Math.abs(differenceX) > 0) {
-            if (differenceX < 0){
-                console.log("Swiped left!");
+            if (differenceX < 0) {
+                if (DEBUG_ENV) console.log("Swiped left!");
                 _changeSlide('next');
-            }
-            else {
-                console.log("Swiped right!");
+            } else {
+                if (DEBUG_ENV) console.log("Swiped right!");
                 _changeSlide('prev');
             }
         }
-        
+
     }
 
     initialize();
