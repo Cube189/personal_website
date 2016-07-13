@@ -129,17 +129,19 @@ var Slider = (function() {
         document.getElementById('slide' + currentSlideIndex).setAttribute('class', currentClass);
         if (DEBUG_ENV) console.log("Current slide ", currentSlideIndex);
 
-        document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
-        document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
+        if (slides.length > 1) {
+            document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
+            document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
 
-        document.addEventListener('keydown', _handleOnKeyPress, false);
+            document.addEventListener('keydown', _handleOnKeyPress, false);
 
-        slider.addEventListener('touchstart', function(e) {
-            touchXStart = e.touches[0].clientX;
-        }, false);
-        slider.addEventListener('touchmove', _handleOnTouchMove, false);
+            slider.addEventListener('touchstart', function(e) {
+                touchXStart = e.touches[0].clientX;
+            }, false);
+            slider.addEventListener('touchmove', _handleOnTouchMove, false);
 
-        window.setInterval(_changeSlide.bind(this, 'next'), slidingInterval);
+            window.setInterval(_changeSlide.bind(this, 'next'), slidingInterval);
+        }
     }
 
     function _changeSlide(b) {

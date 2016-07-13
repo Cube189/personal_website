@@ -1,8 +1,10 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
-var gulp_autoprefixer = require('gulp-autoprefixer');
-var gulp_compile_sass = require('gulp-sass');
-var gulp_uglify = require('gulp-uglify');
+var autoprefixer = require('gulp-autoprefixer');
+var rename = require('gulp-rename');
+var compile_sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var webserver = require('gulp-webserver');
 
 
 gulp.task('browsersync', function() {
@@ -19,10 +21,10 @@ gulp.task('browsersync', function() {
 gulp.task('compile_sass', function() {
     gulp.src('assets/sass/**/*.sass')
         .pipe(plumber())
-        .pipe(gulp_compile_sass({
+        .pipe(compile_sass({
             outputStyle: 'compressed'
         }))
-        .pipe(gulp_autoprefixer({
+        .pipe(autoprefixer({
             browsers: [
                 '> 1%',
                 'last 2 versions',
@@ -43,14 +45,24 @@ gulp.task('compile_sass', function() {
 gulp.task('uglify', function() {
     gulp.src('assets/js/*.js')
         .pipe(plumber())
-        .pipe(gulp_uglify({
+        .pipe(uglify({
             mangle: true
         }))
         .pipe(gulp.dest('assets/minjs/main.js'));
     // gulp.src('assets/css/*.css')
     // .pipe(plumber())
-    // .pipe(gulp_uglify())
+    // .pipe(uglify())
     // .pipe(gulp.dest('assets/css'));
+});
+
+gulp.task('webserver', function () {
+    gulp.src('./')
+        .pipe(webserver({
+            livereload: true,
+            directoryListing: false,
+            open: true
+        }))
+        .pipe(plumber());
 });
 
 
@@ -58,7 +70,8 @@ gulp.task('uglify', function() {
 gulp.task('default', [
     'uglify',
     'compile_sass',
-    //'browsersync'
+    //'browsersync',
+    'webserver'
 ]);
 
 
@@ -69,8 +82,9 @@ gulp.task('watch', function() {
     gulp.watch('assets/sass/**/*.sass', ['compile_sass']);
 
     // gulp.watch('**/*.*', ['browsersync']);
+    gulp.watch('**/*.*', ['webserver']);
 });
 
 gulp.task('watch_sass', function() {
-    gulp.watch('assets/sass/**/*.scss', ['compile_sass']);
+    gulp.watch('assets/sass/**/*.scss', ['compile_sass', 'webserver']);
 });
