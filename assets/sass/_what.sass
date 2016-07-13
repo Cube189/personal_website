@@ -24,37 +24,46 @@ $projectHeaderBoxShadowProps: inset 0 0 10px 1px
       float: right
       clear: left
       margin: 20px
+      animation: activate .5s
       &:nth-child(8n)
+        animation-delay: .1s
         header
           background-color: #ff6319
           box-shadow: $projectHeaderBoxShadowProps #ff6319
       &:nth-child(8n+1)
+        animation-delay: .2s
         header
           background-color: #b933ad
           box-shadow: $projectHeaderBoxShadowProps #b933ad
       &:nth-child(8n+2)
+        animation-delay: .3s
         clear: right
         header
           background-color: #00933c
           box-shadow: $projectHeaderBoxShadowProps #00933c
       &:nth-child(8n+3)
+        animation-delay: .4s
         header
           background-color: #ee352e
           box-shadow: $projectHeaderBoxShadowProps #ee352e
       &:nth-child(8n+4)
+        animation-delay: .5s
         header
           background-color: #fccc0a
           box-shadow: $projectHeaderBoxShadowProps #fccc0a
           color: black
       &:nth-child(8n+5)
+        animation-delay: .6s
         header
           background-color: #996633
           box-shadow: $projectHeaderBoxShadowProps #996633
       &:nth-child(8n+6)
+        animation-delay: .7s
         header
           background-color: #6cbe45
           box-shadow: $projectHeaderBoxShadowProps #6cbe45
       &:nth-child(8n+7)
+        animation-delay: .8s
         header
           background-color: #2850ad
           box-shadow: $projectHeaderBoxShadowProps #2850ad
@@ -198,3 +207,8 @@ $projectHeaderBoxShadowProps: inset 0 0 10px 1px
   .component#what
     .componentHeader span
       display: block
+
+@keyframes activate
+  0%
+    transform: translateY(50vh)
+    opacity: 0

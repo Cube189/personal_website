@@ -58,7 +58,7 @@ function whichTransitionEvent() {
 (function setAuthorsAge() {
     var element = document.getElementById('age');
 
-    var birthDate = new Date(1996, 10, 9);
+    var birthDate = new Date(1996, 10, 9); // 1996-11-09
     var todaysDate = new Date();
 
     var msInOneYear = 365 * 24 * 60 * 60 * 1000;
@@ -124,6 +124,8 @@ var Slider = (function() {
         document.getElementById('prevSliderBtn').addEventListener('click', _changeSlide, false);
         document.getElementById('nextSliderBtn').addEventListener('click', _changeSlide, false);
 
+        document.addEventListener('keydown', _handleOnKeyPress, false);
+
         slider.addEventListener('touchstart', function(e) {
             touchXStart = e.touches[0].clientX;
         }, false);
@@ -175,6 +177,18 @@ var Slider = (function() {
             }, false);
         }
         if (DEBUG_ENV) console.log("Current slide ", currentSlideIndex);
+    }
+
+    function _handleOnKeyPress(e) {
+        if (DEBUG_ENV) console.log('Detected key pressed code:', e.keyCode);
+        switch (e.keyCode) {
+            case 37:
+                _changeSlide('prev');
+                break;
+            case 39:
+                _changeSlide('next');
+                break;
+        }
     }
 
     function _handleOnTouchMove(e) {
