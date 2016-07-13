@@ -1,0 +1,28 @@
+{
+    "slides": [{
+        "title": "Slide 1",
+        "content": "Dignissim porttitor laoreet commodo ligula lacus primis consequat sociosqu rutrum.",
+        "ctaContent": "",
+        "ctaUrl": ""
+    }, {
+        "title": "Slide 2",
+        "content": "Maecenas nulla tempus augue leo tempus quam, neque proin molestie.",
+        "ctaContent": "",
+        "ctaUrl": ""
+    }, {
+        "title": "Slide 3",
+        "content": "Maecenas ipsum mi dictumst montes quis, lacus mollis dis nibh!",
+        "ctaContent": "",
+        "ctaUrl": ""
+    }, {
+        "title": "Slide 4",
+        "content": "Massa, pellentesque elementum sem volutpat per malesuada massa cubilia lacinia!",
+        "ctaContent": "",
+        "ctaUrl": ""
+    }, {
+        "title": "Slide 5",
+        "content": "Quisque condimentum faucibus duis lobortis per lectus quisque himenaeos rutrum.",
+        "ctaContent": "",
+        "ctaUrl": ""
+    }]
+}
