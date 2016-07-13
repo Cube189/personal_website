@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
-var gulp_uglify = require('gulp-uglify');
-var gulp_compile_sass = require('gulp-sass');
 var gulp_autoprefixer = require('gulp-autoprefixer');
+var gulp_compile_sass = require('gulp-sass');
+var gulp_uglify = require('gulp-uglify');
 
 
 gulp.task('browsersync', function() {
@@ -43,8 +43,10 @@ gulp.task('compile_sass', function() {
 gulp.task('uglify', function() {
     gulp.src('assets/js/*.js')
         .pipe(plumber())
-        .pipe(gulp_uglify())
-        .pipe(gulp.dest('assets/minjs'));
+        .pipe(gulp_uglify({
+            mangle: true
+        }))
+        .pipe(gulp.dest('assets/minjs/main.js'));
     // gulp.src('assets/css/*.css')
     // .pipe(plumber())
     // .pipe(gulp_uglify())
