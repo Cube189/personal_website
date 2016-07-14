@@ -118,120 +118,31 @@
             </div>
             <div id="map"></div>
         </article>
-        <article class="component" id="what">
+        <article class="component" id="what" data-ng-controller="ProjectsController">
             <div class="wrapper">
                 <header class="componentHeader">
-                    <h1>What<span>+How</span>
-                        </h1>
+                    <h1>What<span>+How</span></h1>
                 </header>
 
                 <div id="skillset">
                     <input id="projectSearch" type="search" placeholder="Looking for something specific?" />
                     <ul>
-                        <li>
-                            <button data-skill="Java">Java</button>
-                        </li>
-                        <li>
-                            <button data-skill="Hibernate">Hibernate</button>
-                        </li>
-                        <li>
-                            <button data-skill="Spring Boot">Spring Boot</button>
-                        </li>
-                        <li>
-                            <button data-skill="Maven">Maven</button>
-                        </li>
-                        <li>
-                            <button data-skill="Git">Git</button>
-                        </li>
-                        <li>
-                            <button data-skill="HTML">HTML5</button>
-                        </li>
-                        <li>
-                            <button data-skill="CSS">CSS3</button>
-                        </li>
-                        <li>
-                            <button data-skill="Sass">Sass</button>
-                        </li>
-                        <li>
-                            <button data-skill="JavaScript">JavaScript</button>
-                        </li>
-                        <li>
-                            <button data-skill="Angular">Angular</button>
+                        <li data-ng-repeat="s in skills">
+                            <button>{{ s }}</button>
                         </li>
                     </ul>
                 </div>
 
                 <ul id="projects">
-                    <li>
-                        <a href="#">
+                    <li ng-repeat="p in projects">
+                        <a data-ng-href="{{ p.url }}">
                             <header>
-                                <h1>Augue dui dapibus per accumsan tempus lorem dolor sed luctus?</h1>
+                                <h1>{{ p.name }}</h1>
                             </header>
-                            <img src="https://3.bp.blogspot.com/-wrGdOf0xPoE/T3RJoiYU3MI/AAAAAAAAIis/Qj1nMMSc-uI/s1600/central-park-picture.jpg" />
+                            <img data-ng-src="{{ p.imgUrl }}" />
                         </a>
                         <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </article>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <header>
-                                <h1>Sociosqu</h1>
-                            </header>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/NewYorkCityManhattanRockefellerCenter.jpg" />
-                        </a>
-                        <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </article>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <header>
-                                <h1>Cursus luctus torquent nec sagittis</h1>
-                            </header>
-                            <img src="https://photomoodblog.files.wordpress.com/2013/01/31-photo-mood-usa-new-york-winter-city-town-beautiful-snow-2.jpg" />
-                        </a>
-                        <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </article>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <header>
-                                <h1>Sodales amet maecenas</h1>
-                            </header>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/NYC_14th_Street_looking_west_12_2005.jpg" />
-                        </a>
-                        <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </article>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <header>
-                                <h1>Fusce sed mus</h1>
-                            </header>
-                            <img src="https://2.bp.blogspot.com/-tkWsKlwdtIQ/TdFZRFTyJUI/AAAAAAAAAfQ/vRXiMjOhyM8/s1600/New%2BYork%2BCity%2BEnvironment.jpg" />
-                        </a>
-                        <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </article>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <header>
-                                <h1>Tincidunt nulla</h1>
-                            </header>
-                            <img src="https://25.media.tumblr.com/tumblr_lvryx00d0I1qb3uypo1_500.jpg" />
-                        </a>
-                        <article>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>{{ p.desc }}</p>
                         </article>
                     </li>
                 </ul>
@@ -269,8 +180,8 @@
     </div>
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
-    <script src="assets/minjs/main.js"></script>
-    <script src="assets/js/smooth-scroll.js"></script>
+    <script src="assets/minjs/main.min.js"></script>
+    <script src="assets/minjs/smooth-scroll.min.js"></script>
 </body>
 
 </html>

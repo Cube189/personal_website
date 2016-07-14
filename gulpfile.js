@@ -1,22 +1,13 @@
 var gulp = require('gulp');
-var plumber = require('gulp-plumber');
+
 var autoprefixer = require('gulp-autoprefixer');
-var rename = require('gulp-rename');
 var compile_sass = require('gulp-sass');
+var ng_annotate = require('gulp-ng-annotate');
+var plumber = require('gulp-plumber');
+var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var webserver = require('gulp-webserver');
 
-
-gulp.task('browsersync', function() {
-    browserSync({
-        server: {
-            baseDir: './'
-        },
-        open: false,
-        online: false,
-        notify: false,
-    });
-});
 
 gulp.task('compile_sass', function() {
     gulp.src('assets/sass/**/*.sass')
@@ -45,14 +36,14 @@ gulp.task('compile_sass', function() {
 gulp.task('uglify', function() {
     gulp.src('assets/js/*.js')
         .pipe(plumber())
+        .pipe(ng_annotate())
         .pipe(uglify({
             mangle: true
         }))
-        .pipe(gulp.dest('assets/minjs/main.js'));
-    // gulp.src('assets/css/*.css')
-    // .pipe(plumber())
-    // .pipe(uglify())
-    // .pipe(gulp.dest('assets/css'));
+        .pipe(rename(function (path) {
+            path.basename += '.min'
+        }))
+        .pipe(gulp.dest('assets/minjs'));
 });
 
 gulp.task('webserver', function () {
@@ -70,7 +61,6 @@ gulp.task('webserver', function () {
 gulp.task('default', [
     'uglify',
     'compile_sass',
-    //'browsersync',
     'webserver'
 ]);
 
@@ -81,10 +71,9 @@ gulp.task('watch', function() {
 
     gulp.watch('assets/sass/**/*.sass', ['compile_sass']);
 
-    // gulp.watch('**/*.*', ['browsersync']);
-    gulp.watch('**/*.*', ['webserver']);
+    // gulp.watch('**/*.*', ['webserver']);
 });
 
 gulp.task('watch_sass', function() {
-    gulp.watch('assets/sass/**/*.scss', ['compile_sass', 'webserver']);
+    gulp.watch('assets/sass/**/*.scss', ['compile_sass']);
 });

@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "editor.fontSize": 13,
-    "editor.lineHeight": 21
+    "editor.lineHeight": 21,
+    "explorer.openEditors.visible": 0
 }

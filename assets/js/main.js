@@ -37,6 +37,31 @@ function whichTransitionEvent() {
 }
 /* endof UTILS */
 
+var app = angular.module('app', []);
+app.controller('ProjectsController', ['$scope', '$http', function($scope, $http) {
+    $http({
+            method: 'GET',
+            url: 'assets/res/projects.json'
+        })
+        .then(
+            function(r) {
+                if (DEBUG_ENV) {
+                    console.log(r.data.skills);
+                    console.log(r.data.projects);
+                }
+                $scope.skills = r.data.skills;
+                $scope.projects = r.data.projects;
+            },
+            function(r, e) {
+                if (DEBUG_ENV) console.log("Err", e);
+                $scope.skills = r.data.skills;
+                $scope.projects = r.data.projects;
+            }
+        );
+}]);
+
+
+
 (function fadeOutCtaScrollOnScroll() {
     var ctaScrollElement = document.getElementById('cta-scroll');
     var initialCtaScrollOffset = ctaScrollElement.offsetTop;
