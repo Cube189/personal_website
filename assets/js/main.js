@@ -38,6 +38,22 @@ function whichTransitionEvent() {
 /* endof UTILS */
 
 var app = angular.module('app', []);
+app.controller('SliderController', ['$scope', '$http', function($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'assets/res/slides.json'
+    })
+    .then(
+        function(r){
+            if (DEBUG_ENV) console.log(r.data.slides);
+            $scope.slides = r.data.slides;
+        },
+        function(r, e){
+            if (DEBUG_ENV) console.log("Error while loading slides.json", e);
+            $scope.slides = r.data.slides;
+        }
+    )
+}]);
 app.controller('ProjectsController', ['$scope', '$http', function($scope, $http) {
     $http({
             method: 'GET',
@@ -53,7 +69,7 @@ app.controller('ProjectsController', ['$scope', '$http', function($scope, $http)
                 $scope.projects = r.data.projects;
             },
             function(r, e) {
-                if (DEBUG_ENV) console.log("Err", e);
+                if (DEBUG_ENV) console.log("Error while loading projects.json", e);
                 $scope.skills = r.data.skills;
                 $scope.projects = r.data.projects;
             }
