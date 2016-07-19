@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app">
+<html lang="en" data-ng-app="app"> <!-- data-ng-cloak-->
 
 <!--
   Hi!
@@ -125,16 +125,16 @@
                 </header>
 
                 <div id="skillset">
-                    <input id="projectSearch" type="search" placeholder="Looking for something specific?" />
+                    <input id="projectSearch" type="search" placeholder="Looking for something specific?" data-ng-model="projectSearchQuery" />
                     <ul>
-                        <li data-ng-repeat="s in skills">
+                        <li data-ng-repeat="s in skills | lookupSkills: projectSearchQuery track by $index">
                             <button>{{ s }}</button>
                         </li>
                     </ul>
                 </div>
 
                 <ul id="projects">
-                    <li ng-repeat="p in projects">
+                    <li ng-repeat="p in projects | lookupProjects: projectSearchQuery track by $index">
                         <a data-ng-href="{{ p.url }}">
                             <header>
                                 <h1>{{ p.name }}</h1>

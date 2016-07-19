@@ -37,23 +37,25 @@ function whichTransitionEvent() {
 }
 /* endof UTILS */
 
+/* Angular stuff */
 var app = angular.module('app', []);
 app.controller('SliderController', ['$scope', '$http', function($scope, $http) {
     $http({
-        method: 'GET',
-        url: 'assets/res/slides.json'
-    })
-    .then(
-        function(r){
-            if (DEBUG_ENV) console.log(r.data.slides);
-            $scope.slides = r.data.slides;
-        },
-        function(r, e){
-            if (DEBUG_ENV) console.log("Error while loading slides.json", e);
-            $scope.slides = r.data.slides;
-        }
-    )
+            method: 'GET',
+            url: 'assets/res/slides.json'
+        })
+        .then(
+            function(r) {
+                if (DEBUG_ENV) console.log(r.data.slides);
+                $scope.slides = r.data.slides;
+            },
+            function(r, e) {
+                if (DEBUG_ENV) console.log("Error while loading slides.json", e);
+                $scope.slides = r.data.slides;
+            }
+        );
 }]);
+
 app.controller('ProjectsController', ['$scope', '$http', function($scope, $http) {
     $http({
             method: 'GET',
@@ -76,6 +78,47 @@ app.controller('ProjectsController', ['$scope', '$http', function($scope, $http)
         );
 }]);
 
+app.filter('lookupProjects', function() {
+    var results;
+    return function(data, query) {
+        if (query === '' || query === undefined) {
+            return data;
+        }
+        query = query.toLowerCase();
+        results = [];
+
+        data.forEach(function(i) {
+            i.skills.forEach(function(skill) {
+                if (skill.toLowerCase().indexOf(query) > -1) {
+                    results.push(skill);
+                    if (DEBUG_ENV) console.log(query, results, i);
+                }
+            }, this);
+        });
+
+        return results;
+    };
+});
+
+app.filter('lookupSkills', function() {
+    var results;
+    return function(data, query) {
+        if (query === '' || query === undefined) {
+            return data;
+        }
+        query = query.toLowerCase();
+        results = [];
+        data.forEach(function(skill) {
+            if (skill.toLowerCase().indexOf(query) > -1) {
+                results.push(skill);
+                console.log(query, results);
+            }
+        }, this);
+
+        return results;
+    };
+});
+/* endof Angular stuff */
 
 
 (function fadeOutCtaScrollOnScroll() {
@@ -96,6 +139,8 @@ app.controller('ProjectsController', ['$scope', '$http', function($scope, $http)
     }, false);
 })();
 
+
+
 (function handleSnapPoints() {
     var components = document.querySelectorAll('.component');
     var componentsOffsets = [];
@@ -115,6 +160,15 @@ app.controller('ProjectsController', ['$scope', '$http', function($scope, $http)
     var numberOfYears = Math.floor((todaysDate.getTime() - birthDate.getTime()) / msInOneYear);
 
     element.innerHTML = parseInt(numberOfYears);
+})();
+
+(function setSkillsWidth() {
+        var element = document.querySelector('#skillset ul');
+        var defaultHeight = element.clientHeight;
+
+        element.style.height = defaultHeight + 'px';
+
+        window.addEventListener('resize', setSkillsWidth);
 })();
 
 var Nav = (function() {
