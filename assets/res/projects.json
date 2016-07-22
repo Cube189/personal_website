@@ -1,5 +1,16 @@
 {
-    "skills": ["Java", "Hibernate", "Spring Boot", "Maven", "Git", "HTML5", "CSS3", "Sass", "JavaScript", "Angular"],
+    "skills": [
+        "Java",
+        "Hibernate",
+        "Spring Boot",
+        "Maven",
+        "Git",
+        "HTML5",
+        "CSS3",
+        "Sass",
+        "JavaScript",
+        "Angular 1.x"
+    ],
     "projects": [{
         "id": 0,
         "name": "Augue dui dapibus per accumsan tempus lorem dolor sed luctus?",
