@@ -22,11 +22,13 @@
     <link rel="shortcut icon" type="image/png" href="favicon.png" />
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1,width=device-width" />
+    <meta name="theme-color" content="#fff" />
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
+    
     <header id="mainHeader">
         <h1 id="logo">gmur.me</h1>
         <nav id="mainNav">
@@ -46,6 +48,9 @@
             </ul>
         </nav>
     </header>
+
+
+
     <div id="main">
         <span id="cta-scroll">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.125 330.625">
@@ -53,6 +58,8 @@
             />
           </svg>
         </span>
+
+
         <aside class="component slider" id="heroSlider">
             <article id="slide0">
                 <div class="wrapper">
@@ -82,6 +89,7 @@
                     </header>
                 </div>
             </article>
+
             <nav id="sliderNav">
                 <ul>
                     <li>
@@ -103,6 +111,8 @@
                 </ul>
             </nav>
         </aside>
+
+
         <article class="component" id="who">
             <div class="wrapper">
                 <header class="componentHeader">
@@ -119,6 +129,8 @@
             </div>
             <div id="map"></div>
         </article>
+
+
         <article class="component" id="what" data-ng-controller="ProjectsController" data-ng-cloak>
             <div class="wrapper">
                 <header class="componentHeader">
@@ -142,13 +154,17 @@
                             </header>
                             <img data-ng-src="{{ p.imgUrl }}" />
                         </a>
-                        <article>
+
+                        <article class="projectView">
                             <p>{{ p.desc }}</p>
                         </article>
+                        
                     </li>
                 </ul>
             </div>
         </article>
+
+
         <article class="component" id="where">
             <div class="wrapper">
                 <header class="componentHeader">
@@ -178,6 +194,8 @@
                 </ul>
             </div>
         </article>
+
+
     </div>
     <script src="https://api.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
