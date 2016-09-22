@@ -1,19 +1,20 @@
 {
     "skills": [
-        "Java",
+        "Java 8",
         "Hibernate",
-        "Spring Boot",
+        "Spring",
         "Maven",
         "Git",
-        "HTML5",
-        "CSS3",
+        "HTML 5",
+        "CSS 3",
         "Sass",
         "JavaScript",
-        "Angular 1.x"
+        "Angular 1.x",
+        "Python"
     ],
     "projects": [{
         "id": 0,
-        "name": "Augue dui dapibus per accumsan tempus lorem dolor sed luctus?",
+        "name": "Bing Image Downloader",
         "skills": ["Java", "Hibernate"],
         "url": "#",
         "imgUrl": "https://3.bp.blogspot.com/-wrGdOf0xPoE/T3RJoiYU3MI/AAAAAAAAIis/Qj1nMMSc-uI/s1600/central-park-picture.jpg",
@@ -27,21 +28,21 @@
         "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }, {
         "id": 2,
-        "name": "Cursus luctus torquent nec sagittis",
+        "name": "Auree",
         "skills": ["Git", "HTML5"],
         "url": "#",
         "imgUrl": "https://photomoodblog.files.wordpress.com/2013/01/31-photo-mood-usa-new-york-winter-city-town-beautiful-snow-2.jpg",
         "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }, {
         "id": 3,
-        "name": "Sodales amet maecenas",
+        "name": "srt-get",
         "skills": ["CSS3", "Sass"],
         "url": "#",
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/NYC_14th_Street_looking_west_12_2005.jpg",
         "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }, {
         "id": 4,
-        "name": "Fusce sed mus",
+        "name": "gmur.me",
         "skills": ["JavaScript", "Angular"],
         "url": "#",
         "imgUrl": "https://2.bp.blogspot.com/-tkWsKlwdtIQ/TdFZRFTyJUI/AAAAAAAAAfQ/vRXiMjOhyM8/s1600/New%2BYork%2BCity%2BEnvironment.jpg",

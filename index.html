@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    
+
     <header id="mainHeader">
         <h1 id="logo">gmur.me</h1>
         <nav id="mainNav">
@@ -133,32 +133,35 @@
 
         <article class="component" id="what" data-ng-controller="ProjectsController" data-ng-cloak>
             <div class="wrapper">
-                <header class="componentHeader">
-                    <h1>What<span>+How</span></h1>
-                </header>
+                <div>
+                    <header class="componentHeader">
+                        <h1>What<span>+How</span></h1>
+                    </header>
 
-                <div id="skillset">
-                    <input id="projectSearch" type="search" placeholder="Looking for something specific?" data-ng-model="projectSearchQuery" />
-                    <ul>
-                        <li data-ng-repeat="s in skills | lookupSkills: projectSearchQuery track by $index">
-                            <button>{{ s }}</button>
-                        </li>
-                    </ul>
+                    <div id="skillset">
+                        <input id="projectSearch" type="search" placeholder="Looking for something specific?" data-ng-model="projectSearchQuery" />
+                        <ul>
+                            <li data-ng-repeat="s in skills | lookupSkills: projectSearchQuery track by $index">
+                                <button>{{ s }}</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <ul id="projects">
-                    <li ng-repeat="p in projects | lookupProjects: projectSearchQuery track by $index">
-                        <a data-ng-href="{{ p.url }}">
-                            <header>
-                                <h1>{{ p.name }}</h1>
-                            </header>
-                            <img data-ng-src="{{ p.imgUrl }}" />
-                        </a>
+                    <li data-ng-repeat="p in projects | lookupProjects: projectSearchQuery track by $index">
+                        <header>
+                            <h1>
+                                <a data-ng-href="{{ p.url }}" data-content="{{ p.name }}">
+                                    {{ p.name }}
+                                </a>
+                            </h1>
+                        </header>
 
-                        <article class="projectView">
+                        <article class="projectDescription">
                             <p>{{ p.desc }}</p>
+                            <a href="" data-ng-href="{{ p.url }}" class="cta">Project page</a>
                         </article>
-                        
                     </li>
                 </ul>
             </div>
@@ -172,22 +175,22 @@
                 </header>
                 <ul>
                     <li>
-                        <a href="https://github.com/Cube189" id="github" data-attr="GitHub">
+                        <a href="https://github.com/Cube189" id="github">
                                 GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/Cube189" id="twitter" data-attr="Twitter">
+                        <a href="https://twitter.com/Cube189" id="twitter">
                                 Twitter
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/jakub-gmur" id="linkedin" data-attr="LinkedIn">
+                        <a href="https://www.linkedin.com/in/jakub-gmur" id="linkedin">
                                 LinkedIn
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:jakub@gmur.me" id="email" data-attr="Email">
+                        <a href="mailto:jakub@gmur.me" id="email">
                                 Email
                         </a>
                     </li>
