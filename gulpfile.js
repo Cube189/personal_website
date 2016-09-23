@@ -60,8 +60,7 @@ gulp.task('webserver', function () {
 
 gulp.task('default', [
     'uglify',
-    'compile_sass',
-    'webserver'
+    'compile_sass'
 ]);
 
 
