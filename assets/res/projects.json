@@ -10,7 +10,8 @@
         "Sass",
         "JavaScript",
         "Angular 1.x",
-        "Python"
+        "Python",
+        "Travis CI"
     ],
     "projects": [{
         "id": 0,

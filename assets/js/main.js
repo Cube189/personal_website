@@ -162,15 +162,6 @@ app.filter('lookupSkills', function() {
     element.innerHTML = parseInt(numberOfYears);
 })();
 
-(function setSkillsWidth() {
-        var element = document.querySelector('#skillset ul');
-        var defaultHeight = element.clientHeight;
-
-        element.style.height = defaultHeight + 'px';
-
-        window.addEventListener('resize', setSkillsWidth);
-})();
-
 var Nav = (function() {
     var navElement = document.querySelector('#mainNav ul');
     var navElementItems = document.querySelectorAll('#mainNav a');
