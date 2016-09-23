@@ -150,18 +150,9 @@
 
                 <ul id="projects">
                     <li data-ng-repeat="p in projects | lookupProjects: projectSearchQuery track by $index">
-                        <header>
-                            <h1>
-                                <a data-ng-href="{{ p.url }}" data-content="{{ p.name }}">
-                                    {{ p.name }}
-                                </a>
-                            </h1>
-                        </header>
-
-                        <article class="projectDescription">
-                            <p>{{ p.desc }}</p>
-                            <a href="" data-ng-href="{{ p.url }}" class="cta">Project page</a>
-                        </article>
+                        <a data-ng-href="{{ p.url }}">
+                            {{ p.name }}
+                        </a>
                     </li>
                 </ul>
             </div>
