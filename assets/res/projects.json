@@ -14,7 +14,7 @@
     ],
     "projects": [{
         "id": 0,
-        "name": "Bing Image Downloader",
+        "name": "Bing Wallpaper Downloader",
         "skills": ["Java", "Hibernate"],
         "url": "#",
         "imgUrl": "https://3.bp.blogspot.com/-wrGdOf0xPoE/T3RJoiYU3MI/AAAAAAAAIis/Qj1nMMSc-uI/s1600/central-park-picture.jpg",
