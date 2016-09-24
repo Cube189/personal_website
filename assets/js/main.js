@@ -87,11 +87,13 @@ app.filter('lookupProjects', function() {
         query = query.toLowerCase();
         results = [];
 
-        data.forEach(function(i) {
-            i.skills.forEach(function(skill) {
+        data.forEach(function(project) {
+            project.skills.forEach(function(skill) {
+                if (results.indexOf(project) > -1)
+                    return;
                 if (skill.toLowerCase().indexOf(query) > -1) {
-                    results.push(skill);
-                    if (DEBUG_ENV) console.log(query, results, i);
+                    results.push(project);
+                    if (DEBUG_ENV) console.log(query, results, project);
                 }
             }, this);
         });
@@ -111,7 +113,7 @@ app.filter('lookupSkills', function() {
         data.forEach(function(skill) {
             if (skill.toLowerCase().indexOf(query) > -1) {
                 results.push(skill);
-                console.log(query, results);
+                if (DEBUG_ENV) console.log(query, results);
             }
         }, this);
 

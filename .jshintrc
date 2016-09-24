@@ -1,5 +1,7 @@
 {
   "browser": true,
   "devel": true,
-  "globalstrict": true
+  "globalstrict": true,
+  "validthis": true,
+  "predef": ["angular", "mapboxgl"]
 }
