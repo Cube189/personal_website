@@ -2,6 +2,6 @@
   "browser": true,
   "devel": true,
   "globalstrict": true,
-  "validthis": true,
-  "predef": ["angular", "mapboxgl"]
+  "predef": ["angular", "mapboxgl"],
+  "validthis": true
 }
