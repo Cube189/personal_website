@@ -16,7 +16,7 @@
     left: 0
     z-index: 0
     transition: all .4s ease-out
-    transform: translateZ(0)  // force gpu acc
+    transform: translateZ(0)  // force gpu acceleration
 
   .prevSlide
     opacity: 0
@@ -24,11 +24,11 @@
 
   .currentSlide
     visibility: visible
-    z-index: 1
+    z-index: 10
 
   .nextSlide
     transform: translateY(-100%)
-    z-index: 10
+    z-index: 20
 
   #sliderNav
     ul
