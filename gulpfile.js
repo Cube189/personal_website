@@ -4,6 +4,7 @@ var gulp = require('gulp');
 
 var autoprefixer = require('gulp-autoprefixer');
 var compile_sass = require('gulp-sass');
+var del = require('del');
 var jade = require('gulp-jade');
 var ng_annotate = require('gulp-ng-annotate');
 var plumber = require('gulp-plumber');
@@ -16,7 +17,7 @@ gulp.task('compile_jade', function () {
     gulp.src('**/*.jade')
         .pipe(plumber())
         .pipe(jade())
-        .pipe(gulp.dest(file => file.base));
+        .pipe(gulp.dest('_production'));
 });
 
 
@@ -40,7 +41,33 @@ gulp.task('compile_sass', function () {
             ],
             cascade: false
         }))
-        .pipe(gulp.dest('assets/css'));
+        .pipe(gulp.dest('_production/assets/css'));
+});
+
+
+gulp.task('duplicate_for_prod', ['duplicate_images', 'duplicate_res']);
+
+
+gulp.task('clean_prod_folder', function () {
+    del('./_production/**');
+    del('./_production/*.*');
+});
+
+
+gulp.task('duplicate_images', function () {
+    gulp.src('assets/images/**/*.*')
+        .pipe(plumber())
+        .pipe(gulp.dest('_production/assets/images'));
+    gulp.src('favicon.png')
+        .pipe(plumber())
+        .pipe(gulp.dest('_production'));
+});
+
+
+gulp.task('duplicate_res', function () {
+    gulp.src('assets/res/*.*')
+        .pipe(plumber())
+        .pipe(gulp.dest('_production/assets/res'));
 });
 
 
@@ -52,13 +79,13 @@ gulp.task('uglify', function () {
             mangle: true
         }))
         .pipe(rename(function (path) {
-            path.basename += '.min'
+            path.basename += '.min';
         }))
-        .pipe(gulp.dest('assets/minjs'));
+        .pipe(gulp.dest('_production/assets/minjs'));
 });
 
-gulp.task('webserver', function () {
-    gulp.src('./')
+gulp.task('serve', function () {
+    gulp.src('./_production')
         .pipe(webserver({
             livereload: true,
             directoryListing: false,
@@ -72,7 +99,8 @@ gulp.task('webserver', function () {
 gulp.task('default', [
     'uglify',
     'compile_sass',
-    'compile_jade'
+    'compile_jade',
+    'duplicate_for_prod'
 ]);
 
 
@@ -82,7 +110,7 @@ gulp.task('watch', function () {
 
     gulp.watch('assets/sass/**/*.sass', ['compile_sass']);
 
-    // gulp.watch('**/*.*', ['webserver']);
+    gulp.watch('**/*.jade', ['compile_jade']);
 });
 
 gulp.task('watch_sass', function () {
