@@ -1,7 +1,10 @@
+"use strict"
+
 var gulp = require('gulp');
 
 var autoprefixer = require('gulp-autoprefixer');
 var compile_sass = require('gulp-sass');
+var jade = require('gulp-jade');
 var ng_annotate = require('gulp-ng-annotate');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
@@ -9,7 +12,15 @@ var uglify = require('gulp-uglify');
 var webserver = require('gulp-webserver');
 
 
-gulp.task('compile_sass', function() {
+gulp.task('compile_jade', function () {
+    gulp.src('**/*.jade')
+        .pipe(plumber())
+        .pipe(jade())
+        .pipe(gulp.dest(file => file.base));
+});
+
+
+gulp.task('compile_sass', function () {
     gulp.src('assets/sass/**/*.sass')
         .pipe(plumber())
         .pipe(compile_sass({
@@ -33,7 +44,7 @@ gulp.task('compile_sass', function() {
 });
 
 
-gulp.task('uglify', function() {
+gulp.task('uglify', function () {
     gulp.src('assets/js/*.js')
         .pipe(plumber())
         .pipe(ng_annotate())
@@ -60,12 +71,13 @@ gulp.task('webserver', function () {
 
 gulp.task('default', [
     'uglify',
-    'compile_sass'
+    'compile_sass',
+    'compile_jade'
 ]);
 
 
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('assets/js/*.js', ['uglify']);
 
     gulp.watch('assets/sass/**/*.sass', ['compile_sass']);
@@ -73,6 +85,6 @@ gulp.task('watch', function() {
     // gulp.watch('**/*.*', ['webserver']);
 });
 
-gulp.task('watch_sass', function() {
+gulp.task('watch_sass', function () {
     gulp.watch('assets/sass/**/*.scss', ['compile_sass']);
 });
