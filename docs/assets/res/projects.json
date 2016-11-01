@@ -1,0 +1,54 @@
+{
+    "skills": [
+        "Java 8",
+        "Hibernate",
+        "Spring",
+        "Maven",
+        "Git",
+        "HTML 5",
+        "CSS 3",
+        "Sass",
+        "JavaScript",
+        "Angular 1.x",
+        "Gulp",
+        "Python",
+        "Travis CI"
+    ],
+    "projects": [{
+        "id": 0,
+        "name": "Bing Wallpaper Downloader",
+        "skills": ["Java 8", "Maven", "Git", "Travis CI"],
+        "url": "https://github.com/Cube189/BingWallpaperDownloader",
+        "desc": "A Java application which greets you with a fresh beautiful wallpaper every day, courtesy of Bing"
+    }, {
+        "id": 1,
+        "name": "Sociosqu",
+        "skills": ["Spring", "Maven"],
+        "url": "#",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }, {
+        "id": 2,
+        "name": "Sightseer",
+        "skills": ["Git", "HTML5"],
+        "url": "#",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }, {
+        "id": 3,
+        "name": "srt-get",
+        "skills": ["Python", "Git"],
+        "url": "https://github.com/Cube189/srt-get",
+        "desc": "A CLI program for downloading movie subtitles"
+    }, {
+        "id": 4,
+        "name": "gmur.me",
+        "skills": ["HTML 5", "CSS 3", "JavaScript", "Angular 1.x", "Gulp", "Git", "Travis CI"],
+        "url": "https://github.com/Cube189/personal_website",
+        "desc": "My personal portfolio-type website"
+    }, {
+        "id": 5,
+        "name": "Oombra",
+        "skills": ["Java", "Spring", "Hibernate", "JavaFX"],
+        "url": "#",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }]
+}

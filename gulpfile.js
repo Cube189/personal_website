@@ -12,12 +12,16 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var webserver = require('gulp-webserver');
 
+var paths = {
+    production: 'docs'
+};
+
 
 gulp.task('compile_jade', function () {
     gulp.src('**/*.jade')
         .pipe(plumber())
         .pipe(jade())
-        .pipe(gulp.dest('_production'));
+        .pipe(gulp.dest(paths.production));
 });
 
 
@@ -41,7 +45,7 @@ gulp.task('compile_sass', function () {
             ],
             cascade: false
         }))
-        .pipe(gulp.dest('_production/assets/css'));
+        .pipe(gulp.dest(paths.production + '/assets/css'));
 });
 
 
@@ -49,25 +53,25 @@ gulp.task('duplicate_for_prod', ['duplicate_images', 'duplicate_res']);
 
 
 gulp.task('clean_prod_folder', function () {
-    del('./_production/**');
-    del('./_production/*.*');
+    del(paths.production + './**');
+    del(paths.production + '/*.*');
 });
 
 
 gulp.task('duplicate_images', function () {
     gulp.src('assets/images/**/*.*')
         .pipe(plumber())
-        .pipe(gulp.dest('_production/assets/images'));
+        .pipe(gulp.dest(paths.production + '/assets/images'));
     gulp.src('favicon.png')
         .pipe(plumber())
-        .pipe(gulp.dest('_production'));
+        .pipe(gulp.dest(paths.production));
 });
 
 
 gulp.task('duplicate_res', function () {
     gulp.src('assets/res/*.*')
         .pipe(plumber())
-        .pipe(gulp.dest('_production/assets/res'));
+        .pipe(gulp.dest(paths.production + '/assets/res'));
 });
 
 
@@ -81,11 +85,11 @@ gulp.task('uglify', function () {
         .pipe(rename(function (path) {
             path.basename += '.min';
         }))
-        .pipe(gulp.dest('_production/assets/minjs'));
+        .pipe(gulp.dest(paths.production + '/assets/minjs'));
 });
 
 gulp.task('serve', function () {
-    gulp.src('./_production')
+    gulp.src('./' + paths.production)
         .pipe(webserver({
             livereload: true,
             directoryListing: false,
